@@ -104,6 +104,10 @@ public class AuthenticationController {
 	      user.setUsername(username);
 	      String password=userDTO.getPassword();
 	      user.setPassword(passwordEncoder.encode(password));
+	      String firstName=userDTO.getFirstname();
+	      user.setFirstName(firstName);
+	      String lastName=userDTO.getLastname();
+	      user.setLastName(lastName);
 	      user.setEnabled(false);
 	      user.setEmail(userDTO.getEmail());
 	  	List<Authority> auth = authenticationService.findByname("REGULAR");

@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,6 +41,12 @@ public class User implements UserDetails {
 	@Column(name = "password", unique = false, nullable = false)
 	private String password;
 	
+	@Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+	
 	@Column(name = "enabled", unique = false, nullable = false)
 	private boolean enabled;
 	
@@ -63,12 +68,23 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-
-	public User() {
-		
+	public String getFirstName() {
+		return firstName;
 	}
 
-	
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 
 
