@@ -27,15 +27,7 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 		
 		//create files folder in target/classes
-		try {
-			String path = DemoController.class.getProtectionDomain().getCodeSource().getLocation().getPath() + DATA_DIR_PATH;
-			path = path.replaceAll("%20", " ");
-			FileUtils.forceMkdir(new File(path));
-			
-			logger.info("Folder with user files: " + path);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		new File(DemoController.class.getProtectionDomain().getCodeSource().getLocation().getPath() + File.separator + DATA_DIR_PATH).mkdirs();
 	}
 }
  

@@ -22,8 +22,7 @@ import ib.token.TokenHelper;
 //Sem nad putanjama navedenim u WebSecurityConfig.configure(WebSecurity web)
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
-  private final Log logger = LogFactory.getLog(this.getClass());
-
+ 
   private TokenHelper tokenHelper;
 
   private UserDetailsService userDetailsService;

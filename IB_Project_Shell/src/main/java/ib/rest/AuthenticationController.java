@@ -2,25 +2,12 @@ package ib.rest;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.security.KeyPair;
-import java.security.Principal;
-import java.security.cert.X509Certificate;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.activation.FileTypeMap;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -47,11 +34,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ib.entity.Authority;
 import ib.entity.User;
 import ib.entity.UserDTO;
 import ib.entity.UserTokenState;
 import ib.security.auth.JwtAuthenticationRequest;
 import ib.service.impl.CustomUserDetailsService;
+import ib.serviceUser.AuthorityService;
 import ib.serviceUser.UserService;
 import ib.token.TokenHelper;
 
@@ -70,6 +59,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private AuthorityService authenticationService;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -114,6 +106,9 @@ public class AuthenticationController {
 	      user.setPassword(passwordEncoder.encode(password));
 	      user.setEnabled(false);
 	      user.setEmail(userDTO.getEmail());
+	  	List<Authority> auth = authenticationService.findByname("REGULAR");
+		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
+		user.setAuthorities(auth);
 	      userDetailsService.saveUser(user);
 	      
 	      Map<String, String> result = new HashMap<>();

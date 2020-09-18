@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$("#logout").click(function(event){
 
-		window.location='login.html';
+		window.location.replace='login.html';
 		
 		localStorage.removeItem(localStorage.getItem("access_token"));
 		  
@@ -42,7 +42,7 @@ $(document).ready(function() {
 							    contentType: "application/json; charset=UTF-8"
 						
 						         ,success: function(res){
-						        	 window.location='tabelaAdmin.html';
+						        	 window.location.replace='tabelaAdmin.html';
 		            
 					},error:function(resp){
 

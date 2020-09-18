@@ -30,7 +30,7 @@ $(document).ready(function() {
 		            alert(decoded["sub"]);
 		            if(decoded["sub"] !="user"){
 		            	
-		            	window.location.replace='upload.html';
+		            	window.location.replace='#';
 		            }
 		            else{
 		            	window.location.replace='tabelaAdmin.html';

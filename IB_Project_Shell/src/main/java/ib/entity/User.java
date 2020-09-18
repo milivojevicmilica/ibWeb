@@ -1,7 +1,7 @@
 package ib.entity;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -25,10 +25,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
+
 @Entity
 @Table(name="User_Tbl")
 public class User implements UserDetails {
-
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id", unique = true, nullable = false)
@@ -56,26 +57,18 @@ public class User implements UserDetails {
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "authorities_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
-	private Set<Authority> authority;
+	private List<Authority> authorities; 
+	
+	public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
 
 	public User() {
 		
 	}
 
-	public User(String username, String password, Set<Authority> authority) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.authority = authority;
-	}
-
 	
-
-	public User(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
 
 
 
@@ -115,13 +108,6 @@ public class User implements UserDetails {
 		this.enabled = enabled;
 	}
 
-	public Set<Authority> getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(Set<Authority> authority) {
-		this.authority = authority;
-	}
 	
 
 	public String getEmail() {
@@ -152,7 +138,7 @@ public class User implements UserDetails {
 	}
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authority;
+        return this.authorities;
     }
 	
 	@JsonIgnore
@@ -176,7 +162,7 @@ public class User implements UserDetails {
     public String getAuthoritiesAsString() {
     	StringBuilder sb = new StringBuilder();
     	
-    	for (Authority authority : this.authority) {
+    	for (Authority authority : this.authorities) {
     		sb.append(authority.getName() + " ");
     	}
     	
