@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="js/jwt-decode.min.js"></script>
+
+<link rel="stylesheet" href="css/login.css">
+<script src="js/login.js"></script>
+<!--meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /-->
+
+<div class="text-center" style="padding:30px 150px">
+	<div class="logo">Prijava</div>
+	<!-- Main Form -->
+		<div class="login-form-1">
+			<form id="login-form" class="text-left">
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label class="sr-only">Korisnicko Ime</label>
+						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="Korsnicko ime">
+						<label id="greska"></label>
+					</div>
+					<div class="form-group">
+						<label class="sr-only">Lozinka</label>
+						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="Lozinka">
+						<label id="greska1"></label>
+					</div>
+
+				</div>
+				<button type="button" class="login-button" id="login"><i class="fa fa-chevron-right"></i>Login</button>
+			</div>
+			</form>
+		</div>
+</div>
+
+<!-- REGISTRATION FORM -->
+<div class="text-center" style="padding:0px 150px">
+	<div class="logo">Registracija</div>
+	<!-- Main Form -->
+	<div class="login-form-1">
+		<form id="register-form" class="text-left">
+		<div class="login-form-main-message"></div>
+		<div class="main-login-form">
+			<div class="login-group">
+				<div class="form-group">
+					<label for="reg_username" class="sr-only">Korisnicko Ime</label>
+					<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="Korisnicko ime">
+					<label id="greska2"></label>
+				</div>
+				<div class="form-group">
+					<label for="reg_password" class="sr-only">Lozinka</label>
+					<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="Lozinka">
+					<label id="greska3"></label>
+				</div>
+				<div class="form-group">
+					<label for="reg_email" class="sr-only">Email</label>
+					<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email">
+					<label id="greska4"></label>
+				</div>
+				<div class="form-group">
+					<label for="reg_fullname" class="sr-only">Ime</label>
+					<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="Ime">
+					<label id="greska5"></label>
+				</div>
+				<div class="form-group">
+					<label for="reg_lastname" class="sr-only">Prezime</label>
+					<input type="text" class="form-control" id="reg_lastfullname" name="reg_lastname" placeholder="Prezime">
+					<label id="greska6"></label>
+				</div>
+
+
+			</div>
+			<button type="button" class="login-button" id="register"><i class="fa fa-chevron-right"></i>Reg</button>
+		</div>
+
+		</form>
+	</div>
+<!-- end:Main Form -->
+</div>
