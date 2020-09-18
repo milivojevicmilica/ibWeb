@@ -47,11 +47,11 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 	
-	@Column(name = "enabled", unique = false, nullable = false)
-	private boolean enabled;
-	
+
 	@Column(name = "email", unique = false, nullable = true)
 	private String email;
+	@Column(name = "enabled", unique = false, nullable = false)
+	private boolean enabled;
 	
 	
 	@JsonIgnore
@@ -179,7 +179,8 @@ public class User implements UserDetails {
     	StringBuilder sb = new StringBuilder();
     	
     	for (Authority authority : this.authorities) {
-    		sb.append(authority.getName() + " ");
+    		sb.append(
+    				authority.getName() + " ");
     	}
     	
     	return sb.toString();
